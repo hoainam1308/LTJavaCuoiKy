@@ -20,6 +20,7 @@ public class BookController {
 
     @Autowired
     private CategoryService categoryService;
+
     @GetMapping
     public String showAllBook(Model model){
         List<Book> books = bookService.getAllBook();
