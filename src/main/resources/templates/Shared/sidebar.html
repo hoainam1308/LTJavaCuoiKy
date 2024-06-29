@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="sidebarFragment">
+<div class="sidebar">
+    <div class="widget widget_menu d-none d-md-block">
+        <h3 class="sidebar-title">Danh mục</h3>
+        <div class="sidebar-menu">
+            <ul>
+                <li class="has-child dropdown">
+                    <a href="/collections/sach-kinh-te" style="color: #000">Sách Kinh Tế <i
+                            class="fal fa-angle-right"></i></a>
+                    <ul>
+                        <li class="">
+                            <a href="/collections/ngoai-thuong" style="color: #000">Ngoại Thương
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="widget widget_banner banner-effect">
+        <a href="https://www.vinabook.com/products/nghe-thuat-danh-bai-burnout">
+            <img src="//theme.hstatic.net/200000845405/1001223012/14/widget_banner.jpg?v=143"
+                 alt="nghệ thuật đánh bại" />
+
+            <span class="hover hover1"></span>
+
+            <span class="hover hover2"></span>
+
+            <span class="hover hover3"></span>
+
+            <span class="hover hover4"></span>
+
+        </a>
+    </div>
+
+
+
+
+    <div class="widget widget_collection d-none d-md-block">
+        <div class="widget-title">
+            Sách Bán Chạy
+        </div>
+        <div class="widget_collection_list">
+            <div class="product-item-mini">
+                <div class="product-img" style="border: none;">
+
+
+                    <a href="/products/cach-tao-dang-va-cham-soc-cay-bonsai">
+                        <img class="lazy"
+                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                             data-srcset="//product.hstatic.net/200000845405/product/p98054m020_91e28134c5e547beb53cccd4b4975909_small.jpg"
+                             alt="C&#225;ch Tạo D&#225;ng V&#224; Chăm S&#243;c C&#226;y Bonsai" />
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">
+                        <a href="/products/cach-tao-dang-va-cham-soc-cay-bonsai"
+                           title="Cách Tạo Dáng Và Chăm Sóc Cây Bonsai">
+                            Cách Tạo Dáng Và Chăm Sóc Cây Bonsai
+                        </a>
+                    </h3>
+                    <div class="box-pro-prices">
+                        <p class="pro-price ">
+                            <span class="current-price">62,000₫</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
