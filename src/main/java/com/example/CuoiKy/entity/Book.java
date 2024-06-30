@@ -20,6 +20,9 @@ public class Book {
     @Size(max=50, min=1, message = "Title must be less than 50 characters")
     private String title;
 
+    @Column(name = "img")
+    private String imgUrl;
+
     @Column(name = "price")
     @NotNull(message = "Price is required")
     private Double price;

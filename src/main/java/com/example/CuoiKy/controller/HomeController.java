@@ -27,7 +27,9 @@ public class HomeController {
     }
 
     @GetMapping("filter")
-    public List<Book> filterBook(@RequestParam Long cateId, @RequestParam Integer bookPage, @RequestParam Long authorId){
-        return bookService.filterBook(cateId, bookPage, authorId);
+    public String filterBook(Model model, @RequestParam Long cateId, @RequestParam Integer bookPage, @RequestParam Long authorId){
+        List<Book> books = bookService.filterBook(cateId, bookPage, authorId);
+        model.addAttribute("books", books);
+        return "book/list";
     }
 }
