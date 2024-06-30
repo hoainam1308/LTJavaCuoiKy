@@ -19,4 +19,13 @@ public interface IBookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :query, '%'))")
     List<Book> searchBook(@Param("query") String query);
+
+    @Query("SELECT b FROM Book b WHERE b.category.id  = ?1")
+    List<Book> getByCateId(Long cateId);
+
+    @Query("SELECT b.bo.id FROM Book b WHERE b.id  = ?1")
+    Long getSetId(Long id);
+
+    @Query("SELECT b FROM Book b WHERE b.bo.id  = ?1")
+    List<Book> getBySetId(Long boId);
 }

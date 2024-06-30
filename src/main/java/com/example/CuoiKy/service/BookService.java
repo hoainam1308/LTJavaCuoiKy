@@ -24,6 +24,18 @@ public class BookService {
         return bookRepository.searchBook(query);
     }
 
+    public List<Book> getByCateId(Long cate_id){
+        return bookRepository.getByCateId(cate_id);
+    }
+
+    public Long getSetId(Long bookId){
+        return bookRepository.getSetId(bookId);
+    }
+
+    public List<Book> getBySetId(Long set_id){
+        return bookRepository.getBySetId(set_id);
+    }
+
     public Book getBookById(Long id){
         return bookRepository.findById(id).orElse(null);
     }
