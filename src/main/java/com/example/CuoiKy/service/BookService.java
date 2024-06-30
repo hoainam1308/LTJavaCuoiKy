@@ -16,6 +16,14 @@ public class BookService {
         return bookRepository.findAll();
     }
 
+    public List<Book> filterBook(Long cateId, Integer page, Long authorId){
+        return bookRepository.filterBook(cateId, page, authorId);
+    }
+
+    public List<Book> searchBook(String query){
+        return bookRepository.searchBook(query);
+    }
+
     public Book getBookById(Long id){
         return bookRepository.findById(id).orElse(null);
     }
