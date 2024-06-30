@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -22,7 +23,11 @@ public class HomeController {
     private CategoryService categoryService;
 
     @GetMapping
-    public String home(){
+    public String home(Model model, RedirectAttributes redirectAttributes) {
+        if (model.containsAttribute("loginSuccess")) {
+            model.addAttribute("loginSuccessMessage", "Bạn đã đăng nhập thành công!");
+            redirectAttributes.addFlashAttribute("loginSuccess", true); // Thêm thông báo thành công vào Flash Attribute
+        }
         return "home/index";
     }
 
