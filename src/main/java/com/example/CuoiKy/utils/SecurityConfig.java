@@ -31,6 +31,7 @@ public class SecurityConfig {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws
             Exception {
@@ -44,10 +45,6 @@ public class SecurityConfig {
 
                         .hasAnyAuthority("ADMIN", "EMPLOYEE")
 
-                        .requestMatchers("/home/**")
-
-                        .hasAnyAuthority("ADMIN", "USER", "EMPLOYEE")
-
                         .anyRequest().authenticated()
 
                 )
@@ -60,12 +57,11 @@ public class SecurityConfig {
                         .permitAll()
 
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/login")
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/")
-
                         .permitAll()
-
                 )
                 .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret")
                         .tokenValiditySeconds(86400)
