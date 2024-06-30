@@ -23,6 +23,7 @@ public class UserController {
     public String login() {
         return "user/login";
     }
+
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
@@ -42,6 +43,6 @@ public class UserController {
         user.setPassword(new
                 BCryptPasswordEncoder().encode(user.getPassword()));
         userService.save(user);
-        return "redirect:/login";
+        return "redirect:user/login";
     }
 }
