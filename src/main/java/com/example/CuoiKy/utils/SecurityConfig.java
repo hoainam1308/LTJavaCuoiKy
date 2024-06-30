@@ -37,7 +37,7 @@ public class SecurityConfig {
             Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers( "/css/**", "/js/**", "/", "/register", "/error")
+                        .requestMatchers( "/css/**", "/js/**", "/", "/register", "/error", "/verify**","/Shared/**","/img/**", "/forgot-password","/forgot-password-confirm", "/reset-password**")
 
                         .permitAll()
 
@@ -59,8 +59,7 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/")
+                        .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret")

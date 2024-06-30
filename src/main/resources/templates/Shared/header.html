@@ -41,8 +41,8 @@
                             <a class="mr-3 text-uppercase font-weight-bold" href="/logout">Đăng xuất</a>
                         </th:block>
                         <th:block th:unless="${#authorization.expression('isAuthenticated()')}">
-                            <a class="mr-3 text-uppercase font-weight-bold" href="/account/login">Đăng nhập</a>
-                            <a class="mr-3 text-uppercase font-weight-bold" href="/account/register">Đăng ký</a>
+                            <a class="mr-3 text-uppercase font-weight-bold" th:href="@{/login}">Đăng nhập</a>
+                            <a class="mr-3 text-uppercase font-weight-bold" th:href="@{/register}">Đăng ký</a>
                         </th:block>
                     </div>
                     <div class="header-action_cart">
