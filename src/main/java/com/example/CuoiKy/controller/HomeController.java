@@ -32,6 +32,13 @@ public class HomeController {
         return "home/index";
     }
 
+    @GetMapping("/library")
+    public String getAllBook(Model model){
+        List<Book> books = bookService.getAllBook();
+        model.addAttribute("books", books);
+        return "home/library";
+    }
+
     @GetMapping("filter")
     public String filterBook(Model model, @RequestParam Long cateId, @RequestParam Integer bookPage, @RequestParam Long authorId){
         List<Book> books = bookService.filterBook(cateId, bookPage, authorId);
@@ -42,7 +49,7 @@ public class HomeController {
     @GetMapping("/detail/{bookId}")
     public String getBookDetail(Model model, @PathVariable Long bookId){
         Book book = bookService.getBookById(bookId);
-        model.addAttribute("books", book);
+        model.addAttribute("book", book);
         return "home/detail";
     }
 

@@ -1,0 +1,91 @@
+<!doctype html>
+<html amp class="no-js" lang="vi"
+      xmlns:th="http://www.thymeleaf.org">
+<div th:insert="~{Shared/head :: headFragment}"></div>
+<body id="hogwarts-theme" class="collection" style="background: #f9f5ee">
+<div class="nav-overlay" onclick="initNav('close')"></div>
+
+<div class="main-body   ">
+    <div th:insert="~{Shared/header :: headerFragment}"></div>
+    <div th:insert="~{Shared/search :: searchFragment}"></div>
+    <div th:insert="~{Shared/navbarmobile :: navbarmobileFragment}"></div>
+    <div id="collection" class="collection-page">
+        <div class="main-content ">
+            <div class="container">
+                <div id="collection-body" class="py-5">
+                    <div class="row">
+                        <div class="col-12 col-lg-3">
+                            <div th:insert="~{Shared/wrapFilter :: filterFragment}"></div>
+                        </div>
+                        <div class="col-lg-9 col-12">
+                            <div class=" banner-collection-header mb-30">
+                                <img class="w-100"
+                                     src="//theme.hstatic.net/200000845405/1001223012/14/collection_banner.jpg?v=149"
+                                     alt="" />
+                            </div>
+                            <div class="wrap-collection-title">
+                                <div class="heading-collection">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8">
+                                            <h1 class="title">
+                                                Tất cả sách
+                                            </h1>
+                                            <div class="alert-no-filter"></div>
+                                        </div>
+                                        <div class="col-12 col-md-4 mb-sort">
+                                            <div class="filter-mb">
+                                                <button class="filter-mb-btn btn borderFilterMobile">
+                                                    <span>Bộ lọc</span>
+                                                    <span class="filter-icon">
+                                                            <i class="fa fa-filter"></i>
+                                                        </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" filter-here section-box-bg">
+                                <div class="row content-product-list product-list filter clearfix">
+                                    <div class="col-md-4 col-6" th:each="book:${books}">
+                                        <div class="product-item">
+                                            <div class="product-img " style="border: none;">
+                                                <div class="product-sale" style="background: #f03737;">
+                                                    <span>-10%</span>
+                                                </div>
+                                                <a th:href="@{/detail/{id}(id=${book.id})}">
+                                                    <img src="/img/ha-do.jpg"
+                                                         alt="" />
+                                                </a>
+                                                <div class="button-add d-none d-md-flex">
+                                                    <button title="Thêm vào giỏ" class="action "
+                                                            onclick="add_to_cart('1122393285');"
+                                                            data-tooltip="Thêm vào giỏ"><i
+                                                            class="fal fa-cart-plus"></i></button>
+                                                    <a th:href="@{/detail/{id}(id=${book.id})}"
+                                                       data-tooltip="Chi tiết"><i class="fal fa-eye"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="product-detail">
+                                                <h3 class="pro-name"><a th:href="@{/detail/{id}(id=${book.id})}"
+                                                                        th:text="${book.title}"></a></h3>
+                                                <p class="pro-price highlight">
+                                                    <span class="current-price" th:text="${book.price}"></span>
+                                                    <del class="compare-price">333,000₫</del>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:insert="~{Shared/footer :: footerFragment}"></div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{Shared/script :: scriptFragment}"></div>
+</body>
+</html>
