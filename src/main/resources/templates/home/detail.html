@@ -5,42 +5,13 @@
 <body id="hogwarts-theme" class="collection" style="background: #f9f5ee">
 <div class="nav-overlay" onclick="initNav('close')"></div>
 
-<div class="main-body   ">
+<div class="main-body">
     <div th:insert="~{Shared/header :: headerFragment}"></div>
     <div th:insert="~{Shared/search :: searchFragment}"></div>
-    <div class="main-body    main-body-product ">
+    <div class="main-body main-body-product">
         <div id="product" class="productDetail-page">
-            <div class="breadcrumb-shop">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
-                            <ol class="breadcrumb breadcrumb-arrows" itemscope
-                                itemtype="http://schema.org/BreadcrumbList">
-                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                    <a href="/" target="_self" itemprop="item"><span itemprop="name">Trang
-                                            chủ</span></a>
-                                    <meta itemprop="position" content="1" />
-                                </li>
-                                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-                                    <a href="https://www.vinabook.com/collections/giam-10" target="_self"
-                                       itemprop="item">
-                                        <span itemprop="name">Giảm 10%</span>
-                                    </a>
-                                    <meta itemprop="position" content="2" />
-                                </li>
-                                <li class="active" itemprop="itemListElement" itemscope
-                                    itemtype="http://schema.org/ListItem">
-                                    <span itemprop="item"
-                                          content="https://www.vinabook.com/products/lan-theo-dau-ky-uc">
-                                        <span itemprop="name">Lần Theo Dấu Ký Ức</span>
-                                    </span>
-                                    <meta itemprop="position" content="3" />
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Breadcrumb section -->
+            <!-- Product detail section -->
             <div class="product-detail-wrapper py-5 bg-white">
                 <div class="container">
                     <div class="row">
@@ -52,171 +23,70 @@
                                             <div class="product-gallery">
                                                 <div class="product-image-detail box__product-gallery scroll">
                                                     <div class="text-center">
+                                                        <!-- Display book image -->
                                                         <img class="product-image-feature"
-                                                             src="/img/ha-do.jpg"
-                                                             alt=" Lần Theo Dấu Ký Ức ">
+                                                             th:src="${book.imgUrl}"
+                                                             alt="Thumnail">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12 col-lg-6 product-content-desc" id="detail-product">
                                             <div class="product-title">
+                                                <!-- Display book title -->
                                                 <h1 th:text="${book.title}"></h1>
+                                                <!-- Display other details like ISBN -->
                                                 <span id="pro_sku"><strong>ISBN:</strong>8938539539314</span>
                                             </div>
-                                            <p class="product-type">
-                                                Thiện Tri Thức
-                                            </p>
+                                            <!-- Display book category -->
+                                            <p class="product-type" th:text="${book.category.name}"></p>
                                             <div class="product-price" id="price-preview">
-                                                <span class="pro-price">299,700₫</span>
+                                                <!-- Display book price -->
+                                                <span class="pro-price" th:text="${book.price} + '₫'"></span>
+                                                <!-- Optional: Display discounted price -->
                                                 <del>333,000₫</del>
                                                 <span class="pro-sale hide">-10% </span>
                                             </div>
-                                            <form id="add-item-form" action="/cart/add" method="post"
-                                                  class="variants clearfix">
+                                            <!-- Form for adding to cart -->
+                                            <!-- Here, you can customize based on your requirements -->
+                                            <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
                                                 <div class="select clearfix">
+                                                    <!-- Example of selecting options -->
                                                     <select id="product-select" name="id">
-                                                        <option value="1122393285">Thiện Tri Thức / 2024 / 318 -
-                                                            299,700₫</option>
+                                                        <option value="1122393285">Thiện Tri Thức / 2024 / 318 - 299,700₫</option>
                                                     </select>
                                                 </div>
-                                                <div class="select-swatch clearfix">
-                                                </div>
+                                                <!-- Quantity selector -->
                                                 <div class="selector-actions">
                                                     <div class="quantity-area clearfix">
-                                                        <input type="button" value="-" onclick="minusQuantity()"
-                                                               class="qty-btn">
-                                                        <input type="text" id="quantity" name="quantity" value="1"
-                                                               min="1" class="quantity-selector">
-                                                        <input type="button" value="+" onclick="plusQuantity()"
-                                                               class="qty-btn">
+                                                        <input type="button" value="-" onclick="minusQuantity()" class="qty-btn">
+                                                        <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                                        <input type="button" value="+" onclick="plusQuantity()" class="qty-btn">
                                                     </div>
+                                                    <!-- Add to cart button -->
                                                     <div class="wrap-addcart">
-                                                        <button th:href="@{/cart/add/{id}(id=${book.id})}" type="button"
-                                                                class=" add-to-cartProduct btn btn-primary btn-addtocart addtocart-modal "
-                                                                name="add">
-                                                            Thêm vào giỏ
-                                                        </button>
+                                                        <form th:action="@{~/add}" method="post">
+                                                            <input type="hidden" name="id" th:value="${book.id}" />
+                                                            <button type="submit" class="add-to-cartProduct btn btn-primary btn-addtocart addtocart-modal" name="add">
+                                                                Thêm vào giỏ
+                                                            </button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-lg-3 d-none d-md-block">
-                                </div>
+                                <!-- Sidebar section (if any) -->
                             </div>
                         </div>
-                        <div class="col-12 col-lg-9">
-                            <div class="product-description">
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
-                                           href="#nav-home" role="tab" aria-controls="nav-home"
-                                           aria-selected="true">GIỚI THIỆU SÁCH</a>
-                                    </div>
-                                </nav>
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                         aria-labelledby="nav-home-tab">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-3">
-                            <div class="sidebar-block sidebar-product mb-4">
-                                <div class="sidebar-title">
-                                    <h3>Sản phẩm nổi bật</h3>
-                                </div>
-                                <div class="sidebar-content">
-                                    <div class="product-item-mini">
-                                        <div class="product-img" style="border: none;">
-                                            <div class="product-sale" style="background: #f03737;"><span>-10%</span>
-                                            </div>
-
-                                            <a href="/products/tap-van-hoa-ky-niem-nguyen-du-giay-do-hop-giay">
-                                                <img class="lazy"
-                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                     data-srcset="//product.hstatic.net/200000845405/product/tap-van-hoa-ky-niem-nguyen-du_d84377dcb9994eb3bd1d5c778b1f59d1_small.jpg"
-                                                     alt=" Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó) " />
-                                            </a>
-                                        </div>
-                                        <div class="product-content">
-                                            <h3 class="product-title">
-                                                <a href="/products/tap-van-hoa-ky-niem-nguyen-du-giay-do-hop-giay"
-                                                   title="Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)">
-                                                    Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)
-                                                </a>
-                                            </h3>
-                                            <div class="box-pro-prices">
-                                                <p class="pro-price highlight">
-                                                    <span class="current-price">900,000₫</span>
-                                                    <span class="pro-price-del">
-                                                        <del class="compare-price">
-                                                            1,000,000₫
-                                                        </del>
-                                                    </span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="list-productRelated clearfix">
-                                <div class="section-heading text-center">
-                                    <h2 class="section-title">
-                                        <span>Sản phẩm liên quan</span>
-                                    </h2>
-                                    <div class="line">
-                                        <div class="circle">
-                                            <span class="line-left line-shape bg-primary"></span>
-                                            <span class="line-right line-shape bg-primary"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content-product-list row">
-                                    <div class="col-6 col-md-4 col-lg-3">
-                                        <div class="product-item">
-                                            <div class="product-img " style="border: none;">
-                                                <div class="product-sale" style="background: #f03737;"><span>-10%</span>
-                                                </div>
-                                                <a
-                                                        href="/products/bach-khoa-giai-toa-cang-thang-50-giai-phap-gat-bo-moi-lo-lang-muon-phien-va-met-moi-trong-cuoc-song">
-                                                    <img src="//product.hstatic.net/200000845405/product/b_a_1_b_ch_khoa_7bd0cb807bf143279b38a88761f644e9_medium.png"
-                                                         alt=" “Bách Khoa” Giải Tỏa Căng Thẳng - 50+ Giải Pháp Gạt Bỏ Mọi Lo Lắng, Muộn Phiền Và Mệt Mỏi Trong Cuộc Sống " />
-
-                                                </a>
-                                                <div class="button-add d-none d-md-flex">
-                                                    <button title="Thêm vào giỏ" class="action "
-                                                            onclick="add_to_cart('1122127436');"
-                                                            data-tooltip="Thêm vào giỏ"><i
-                                                            class="fal fa-cart-plus"></i></button>
-                                                </div>
-                                            </div>
-                                            <div class="product-detail">
-                                                <h3 class="pro-name"><a
-                                                        href="/products/bach-khoa-giai-toa-cang-thang-50-giai-phap-gat-bo-moi-lo-lang-muon-phien-va-met-moi-trong-cuoc-song"
-                                                        title="“Bách Khoa” Giải Tỏa Căng Thẳng - 50+ Giải Pháp Gạt Bỏ Mọi Lo Lắng, Muộn Phiền Và Mệt Mỏi Trong Cuộc Sống">“Bách
-                                                    Khoa” Giải Tỏa Căng Thẳng - 50+ Giải Pháp Gạt Bỏ Mọi Lo Lắng,
-                                                    Muộn Phiền Và Mệt Mỏi Trong Cuộc Sống</a></h3>
-                                                <p class="pro-price highlight">
-                                                    <span class="current-price">107,100₫</span>
-                                                    <del class="compare-price">119,000₫</del>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Description and related products sections -->
                     </div>
                 </div>
             </div>
         </div>
-        <div id="site-overlay" class="site-overlay"></div>
     </div>
+    <!-- Footer section -->
     <div th:insert="~{Shared/footer :: footerFragment}"></div>
 </div>
 <div th:insert="~{Shared/script :: scriptFragment}"></div>
