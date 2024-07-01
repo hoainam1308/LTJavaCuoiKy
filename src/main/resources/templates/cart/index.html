@@ -40,7 +40,10 @@
                         <div class="cart-container">
                             <div class="cart-col-left">
                                 <div class="main-content-cart">
-                                    <form action="/cart" method="post" id="cartformpage">
+                                    <form action="/borrow" method="post" id="cartformpage">
+                                        <th:block th:if="${#authorization.expression('isAuthenticated()')}">
+                                            <input type="hidden" name="userName" th:value="${#authentication.name}" />
+                                        </th:block>
                                         <div class="row">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <table class="table-cart">
@@ -85,6 +88,7 @@
                                                 </table>
                                             </div>
                                         </div>
+                                        <button type="submit">Borrow</button>
                                     </form>
                                 </div>
                             </div>

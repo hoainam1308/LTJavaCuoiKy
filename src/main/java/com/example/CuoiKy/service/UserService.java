@@ -73,6 +73,7 @@ public class UserService {
         return null;
     }
 
+
     public User getUserByPasswordResetToken(String token) {
         return passwordResetTokenRepository.findByToken(token).getUser();
     }

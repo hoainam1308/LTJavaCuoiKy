@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,12 +17,15 @@ public class Borrow {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "card_id", nullable = false)
-    private Card card;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Column(name = "borrow_date")
     @NotNull(message = "Borrow date is required")
     @Temporal(TemporalType.DATE)
     private Date borrowDate;
+
+    @OneToMany(mappedBy = "borrow", cascade = CascadeType.ALL)
+    private List<BorrowDetail> details;
 
 }
