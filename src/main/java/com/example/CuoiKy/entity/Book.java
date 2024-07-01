@@ -17,7 +17,7 @@ public class Book {
 
     @Column(name = "title")
     @NotEmpty(message = "Title must not be empty")
-    @Size(max=50, min=1, message = "Title must be less than 50 characters")
+    @Size(max=200, min=1, message = "Title must be less than 200 characters")
     private String title;
 
     @Column(name = "img")

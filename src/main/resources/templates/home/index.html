@@ -2,17 +2,12 @@
 <html amp class="no-js" lang="vi"
       xmlns:th="http://www.thymeleaf.org">">
 <!--<![endif]-->
-
 <div th:insert="~{Shared/head :: headFragment}"></div>
-
 <body id="hogwarts-theme" class="index" style="background: #f9f5ee">
-<div class="nav-overlay" onclick="initNav('close')"></div>
 
 <div class="main-body">
   <div th:insert="~{Shared/header :: headerFragment}"></div>
   <div th:insert="~{Shared/search :: searchFragment}"></div>
-  <div th:insert="~{Shared/navbarmobile :: navbarmobileFragment}"></div>
-  <h1 class="hidden entry-title">Vinabook</h1>
   <div class="container">
     <div class="row flex-row-reverse">
       <div class="col-12 col-lg-9">
@@ -22,62 +17,8 @@
                data-dot="true" data-nav="true">
             <div class="item">
               <div class="image">
-                <a href="https://www.vinabook.com/collections/sach-70">
-                  <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_1.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_1_large.jpg?v=143">
-                    <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_1_small.jpg?v=143"
-                         alt="">
-                  </picture>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="image">
-                <a href="https://www.vinabook.com/collections/giverbooks">
-                  <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_2.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_2_large.jpg?v=143">
-                    <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_2_small.jpg?v=143"
-                         alt="giver books">
-                  </picture>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="image">
-                <a
-                        href="https://www.vinabook.com/products/quan-tu-thuat-cai-tri-dat-nuoc-cua-bac-quan-vuong">
-                  <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_3.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_3_large.jpg?v=143">
-                    <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_3_small.jpg?v=143"
-                         alt="Quản Tử">
-                  </picture>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="image">
-                <a href="https://www.vinabook.com/collections/alphabooks">
-                  <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_4.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_4_large.jpg?v=143">
-                    <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/home_slider_image_4_small.jpg?v=143"
-                         alt="S&#225;ch Alpha">
-                  </picture>
+                <a href="">
+                  <img src="img/home_slider_image_1.jpg" alt=""/>
                 </a>
               </div>
             </div>
@@ -87,15 +28,11 @@
           <div class="row">
             <div class="col-12 col-md-6">
               <div class="item banner-effect">
-                <a href="https://www.vinabook.com/products/ho-so-tam-ly-pham-toi-tap-5">
+                <a href="">
                   <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/htb_img_1.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/htb_img_1_large.jpg?v=143">
                     <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/htb_img_1_small.jpg?v=143"
-                         alt="hồ sơ tâm lý tội phạm 5" />
+                         src="/img/banner_1.jpg"
+                         alt="" />
                   </picture>
                   <span class="hover hover1"></span>
                   <span class="hover hover2"></span>
@@ -106,14 +43,10 @@
             </div>
             <div class="col-12 col-md-6">
               <div class="item banner-effect">
-                <a href="https://www.vinabook.com/products/to-thu">
+                <a href="">
                   <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/htb_img_2.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/htb_img_2_large.jpg?v=143">
                     <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/htb_img_2_small.jpg?v=143"
+                         src="/img/banner_2.jpg"
                          alt="tố thư" />
                   </picture>
                   <span class="hover hover1"></span>
@@ -130,87 +63,33 @@
             <div class="htp-tabs-wrapper">
               <div class="htp-tablinks">
                 <button class="htp-tablink active" data-id="htp-tab-1">Sách Mới Nổi Bật</button>
-                <button class="htp-tablink " data-id="htp-tab-2">Sách Khuyến Mãi</button>
               </div>
               <div class="htp-tabcontents section-box-bg">
                 <div class="htp-tabcontent active" data-id="htp-tab-1">
                   <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3">
+                    <div class="col-6 col-md-4 col-lg-3" th:each="book:${books}">
                       <div class="product-item">
-
-                        <div class="product-img " style="border: none;">
-                          <div class="product-sale" style="background: #f03737;">
-                            <span>-10%</span>
-                          </div>
-                          <a href="/products/tap-ngo-lo-duong-den-tam-an">
+                        <div class="product-img" style="border: none;">
+                          <a th:href="@{/detail/{id}(id=${book.id})}">
                             <img class="lazy"
-                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                 data-srcset="//product.hstatic.net/200000845405/product/upload_399b662127fd49a58baeb49fe471e631_medium.jpg"
-                                 alt=" Tập Ngó Lơ - Đường Đến Tâm An " />
+                                 th:src="@{${book.imgUrl}}"
+                                 alt="" />
                           </a>
                           <div class="button-add d-none d-md-flex">
-                            <button type="button" class="btnQuickView quick-view"
-                                    data-handle="/products/tap-ngo-lo-duong-den-tam-an"
-                                    data-tooltip="Xem nhanh"><i class="fal fa-search-plus"
-                                                                aria-hidden="true"></i></button>
-                            <button title="Thêm vào giỏ" class="action "
-                                    onclick="add_to_cart('1125119477');"
+                            <button title="Thêm vào giỏ"
                                     data-tooltip="Thêm vào giỏ"><i
                                     class="fal fa-cart-plus"></i></button>
-                            <a href="/products/tap-ngo-lo-duong-den-tam-an"
+                            <a th:href="@{/detail/{id}(id=${book.id})}"
                                data-tooltip="Chi tiết"><i class="fal fa-eye"></i></a>
                           </div>
                         </div>
                         <div class="product-detail">
                           <h3 class="pro-name"><a
-                                  href="/products/tap-ngo-lo-duong-den-tam-an"
-                                  title="Tập Ngó Lơ - Đường Đến Tâm An">Tập Ngó Lơ - Đường
-                            Đến Tâm An</a></h3>
+                                  th:href="@{/detail/{id}(id=${book.id})}"
+                                  th:text="${book.title}"
+                                  ></a></h3>
                           <p class="pro-price highlight">
                             <span class="current-price">148,500₫</span>
-                            <del class="compare-price">165,000₫</del>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="htp-tabcontent " data-id="htp-tab-2">
-                  <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3">
-                      <div class="product-item">
-                        <div class="product-img " style="border: none;">
-                          <div class="product-sale" style="background: #f03737;">
-                            <span>-70%</span>
-                          </div>
-                          <a href="/products/1500-structured-tests-level-3">
-                            <img class="lazy"
-                                 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                 data-srcset="//product.hstatic.net/200000845405/product/p64225mbia_treuoc_27b54cc059de4632a776dda3866b56c1_medium.jpg"
-                                 alt="1500 Structured Tests - Level 3" />
-                          </a>
-                          <div class="button-add d-none d-md-flex">
-                            <button type="button" class="btnQuickView quick-view"
-                                    data-handle="/products/1500-structured-tests-level-3"
-                                    data-tooltip="Xem nhanh"><i class="fal fa-search-plus"
-                                                                aria-hidden="true"></i></button>
-                            <button title="Thêm vào giỏ" class="action "
-                                    onclick="add_to_cart('1120460330');"
-                                    data-tooltip="Thêm vào giỏ"><i
-                                    class="fal fa-cart-plus"></i></button>
-                            <a href="/products/1500-structured-tests-level-3"
-                               data-tooltip="Chi tiết"><i class="fal fa-eye"></i></a>
-                          </div>
-                        </div>
-                        <div class="product-detail">
-                          <h3 class="pro-name"><a
-                                  href="/products/1500-structured-tests-level-3"
-                                  title="1500 Structured Tests - Level 3">1500 Structured
-                            Tests - Level 3</a></h3>
-                          <p class="pro-price highlight">
-                            <span class="current-price">26,400₫</span>
-
-                            <del class="compare-price">88,000₫</del>
                           </p>
                         </div>
                       </div>
@@ -225,14 +104,10 @@
           <div class="row">
             <div class="col-12  col-md-3 ">
               <div class="item banner-effect">
-                <a href="https://www.vinabook.com/collections/truyen-tranh">
+                <a href="">
                   <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_1.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_1_large.jpg?v=143">
                     <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_1_small.jpg?v=143"
+                         src="/img/banner_3.jpg"
                          alt="" />
                   </picture>
                   <span class="hover hover1"></span>
@@ -244,15 +119,11 @@
             </div>
             <div class="col-12   col-md-9 ">
               <div class="item banner-effect">
-                <a href="https://www.vinabook.com/products/minh-am-bia-cung">
+                <a href="">
                   <picture>
-                    <source media="(min-width: 768px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_2.jpg?v=143">
-                    <source media="(max-width: 767px)"
-                            srcset="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_2_large.jpg?v=143">
                     <img loading="lazy"
-                         src="//theme.hstatic.net/200000845405/1001223012/14/col2_htb_img_2_small.jpg?v=143"
-                         alt="Minh Ám" />
+                         src="/img/banner_4.jpg"
+                         alt="" />
                   </picture>
                   <span class="hover hover1"></span>
                   <span class="hover hover2"></span>
@@ -278,24 +149,19 @@
                   <div class="product-img " style="border: none;">
                     <a href="/products/anh-trai-toi-la-do-ngoc">
                       <img class="lazy"
-                           src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                           data-srcset="//product.hstatic.net/200000845405/product/bia_anh_trai_toi_la_do_ngoc_2__gui_in_c1986210b50543be8e5b21e50e2ce9e4_medium.jpg"
-                           alt=" Anh Trai Tôi Là Đồ Ngốc  Tập 2 " />
+                           src=""
+                           alt="" />
                     </a>
                     <div class="button-add d-none d-md-flex">
-                      <button type="button" class="btnQuickView quick-view"
-                              data-handle="/products/anh-trai-toi-la-do-ngoc"
-                              data-tooltip="Xem nhanh"><i class="fal fa-search-plus"
-                                                          aria-hidden="true"></i></button>
                       <button title="Thêm vào giỏ" class="action "
                               onclick="add_to_cart('1124940069');" data-tooltip="Thêm vào giỏ"><i
                               class="fal fa-cart-plus"></i></button>
-                      <a href="/products/anh-trai-toi-la-do-ngoc" data-tooltip="Chi tiết"><i
+                      <a href="" data-tooltip="Chi tiết"><i
                               class="fal fa-eye"></i></a>
                     </div>
                   </div>
                   <div class="product-detail">
-                    <h3 class="pro-name"><a href="/products/anh-trai-toi-la-do-ngoc"
+                    <h3 class="pro-name"><a href="c"
                                             title="Anh Trai Tôi Là Đồ Ngốc  Tập 2">Anh Trai Tôi Là Đồ Ngốc Tập
                       2</a></h3>
                     <p class="pro-price ">

@@ -8,7 +8,6 @@
 <div class="main-body   ">
     <div th:insert="~{Shared/header :: headerFragment}"></div>
     <div th:insert="~{Shared/search :: searchFragment}"></div>
-    <div th:insert="~{Shared/navbarmobile :: navbarmobileFragment}"></div>
     <div class="layoutPage-cart" id="layout-cart">
         <div class="breadcrumb-shop">
             <div class="container">
@@ -84,46 +83,6 @@
                                                     </tr>
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-5 col-lg-7">
-                                                <div class="sidebox-group">
-                                                    <h3>Ghi chú đơn hàng</h3>
-                                                    <div class="checkout-note clearfix">
-                                                        <textarea id="note" name="note" rows="4"  placeholder="Ghi chú"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-7 col-lg-5">
-                                                <div class="sidebox-order">
-                                                    <div class="sidebox-order-inner">
-                                                        <div class="sidebox-order_title">
-                                                            <h3>Thông tin đơn hàng</h3>
-                                                        </div>
-                                                        <div class="sidebox-order_total">
-                                                            <p>Tổng tiền:
-                                                                <span class="total-price">379,800₫</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="sidebox-order_text">
-                                                            <p>Phí vận chuyển sẽ được tính ở trang thanh toán.<br>
-                                                                Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
-                                                        </div>
-                                                        <div class="sidebox-order_action">
-                                                            <a class="btn btn-dark btncart-checkout">THANH TOÁN</a>
-                                                            <p class="link-continue">
-                                                                <a  href="/collections/all">
-                                                                    <i class="fa fa-reply"></i> Tiếp tục mua hàng
-                                                                </a>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cart-buttons hidden">
-                                                    <button type="submit" id="update-cart" class="btn-update button dark hidden" name="update" value="" >Cập nhật</button>
-                                                    <button type="submit" id="checkout" class="btn-checkout button dark hidden" name="checkout" value="" >Thanh toán</button>
-                                                </div>
                                             </div>
                                         </div>
                                     </form>

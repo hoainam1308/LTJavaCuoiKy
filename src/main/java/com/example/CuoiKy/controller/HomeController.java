@@ -29,6 +29,8 @@ public class HomeController {
             model.addAttribute("loginSuccessMessage", "Bạn đã đăng nhập thành công!");
             redirectAttributes.addFlashAttribute("loginSuccess", true); // Thêm thông báo thành công vào Flash Attribute
         }
+        List<Book> books = bookService.getAllBook();
+        model.addAttribute("books", books);
         return "home/index";
     }
 
