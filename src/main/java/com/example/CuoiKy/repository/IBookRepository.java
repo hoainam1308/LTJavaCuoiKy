@@ -2,13 +2,14 @@ package com.example.CuoiKy.repository;
 
 import com.example.CuoiKy.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IBookRepository extends JpaRepository<Book, Long> {
+public interface IBookRepository extends JpaRepository<Book, Long>, JpaSpecificationExecutor<Book> {
     @Query("SELECT b FROM Book b WHERE " +
             "(:cateId IS NULL OR b.category.id = :cateId) AND " +
             "(:page IS NULL OR b.page = :page) AND " +
@@ -28,4 +29,6 @@ public interface IBookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b WHERE b.bo.id  = ?1")
     List<Book> getBySetId(Long boId);
+
+    List<Book> findByAuthorIdAndCategoryIdAndPageBetween(Long authorId, Long categoryId, Integer minPage, Integer maxPage);
 }

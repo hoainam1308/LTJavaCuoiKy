@@ -1,105 +1,134 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Library</title>
 </head>
 <body>
 <div th:fragment="filterFragment">
     <div class="wrap-filter">
         <div class="box_sidebar">
             <div class="block left-module">
-                <div class=" filter_xs">
+                <div class="filter_xs">
                     <div class="layered">
                         <div class="sidebar-block block_content">
-                            <!-- ./filter brand -->
-                            <div class="group-filter" aria-expanded="true">
-                                <div class="layered_subtitle dropdown-filter"><span>Tác
-                                                                    Giả</span><span class="icon-control"></span></div>
-                                <div class="layered-content bl-filter filter-brand">
-                                    <ul class="check-box-list">
-                                        <li>
-                                            <input type="checkbox" id="data-brand-p1"
-                                                   value="NXB Kim Đồng" name="brand-filter"
-                                                   data-vendor="(vendor:product contains NXB Kim Đồng)" />
-                                            <label for="data-brand-p1">NXB Kim Đồng</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- ./filter price -->
-                            <div class="group-filter" aria-expanded="true">
-                                <div class="layered_subtitle dropdown-filter"><span>SỐ TRANG</span><span class="icon-control"></span></div>
-                                <div class="layered-content bl-filter filter-price">
-                                    <ul class="check-box-list">
-                                        <li>
-                                            <input type="checkbox" id="p1" name="cc"
-                                                   data-price="(price:product<=100000)" />
-                                            <label for="p1"><span>Dưới</span>
-                                                100,000₫</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="p2" name="cc"
-                                                   data-price="((price:product>100000)&amp;&amp;(price:product<=2000000))" />
-                                            <label for="p2">100,000₫ - 2,000,000₫</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="p3" name="cc"
-                                                   data-price="((price:product>200000)&amp;&amp;(price:product<=300000))" />
-                                            <label for="p3">200,000₫ - 300,000₫</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="p4" name="cc"
-                                                   data-price="((price:product>300000)&amp;&amp;(price:product<=500000))" />
-                                            <label for="p4">300,000₫ - 500,000₫</label>
-                                        </li>
-                                        <li>
-                                            <input type="checkbox" id="p5" name="cc"
-                                                   data-price="(price:product>=500000)" />
-                                            <label for="p5"><span>Trên</span>
-                                                500,000₫</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sidebar-block sidebar-product">
-                            <div class="sidebar-title">
-                                <h3>Sản phẩm nổi bật</h3>
-                            </div>
-                            <div class="sidebar-content">
-                                <div class="product-item-mini">
-                                    <div class="product-img" style="border: none;">
-                                        <a
-                                                href="">
-                                            <img class="lazy"
-                                                 src=""
-                                                 alt="" />
-                                        </a>
+                            <form th:action="@{/filter}" method="get">
+                                <!-- Filter by Author -->
+                                <div class="group-filter" aria-expanded="true">
+                                    <div class="layered_subtitle dropdown-filter">
+                                        <span>Tác Giả</span>
+                                        <span class="icon-control"></span>
                                     </div>
-                                    <div class="product-content">
-                                        <h3 class="product-title">
-                                            <a href=""
-                                               title="Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)">
-                                                Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)
+                                    <div class="layered-content bl-filter filter-brand">
+                                        <ul class="check-box-list">
+                                            <li th:each="author : ${authors}">
+                                                <input type="radio"
+                                                       th:id="'data-author-' + ${author.id}"
+                                                       th:value="${author.id}"
+                                                       name="authorId"
+                                                       th:checked="${author.id == param.authorId}" />
+                                                <label th:for="'data-author-' + ${author.id}"
+                                                       th:text="${author.name}">Author Name</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Filter by Category -->
+                                <div class="group-filter" aria-expanded="true">
+                                    <div class="layered_subtitle dropdown-filter">
+                                        <span>Thể Loại</span>
+                                        <span class="icon-control"></span>
+                                    </div>
+                                    <div class="layered-content bl-filter filter-category">
+                                        <ul class="check-box-list">
+                                            <li th:each="category : ${categories}">
+                                                <input type="radio"
+                                                       th:id="'data-category-' + ${category.id}"
+                                                       th:value="${category.id}"
+                                                       name="categoryId"
+                                                       th:checked="${category.id == param.categoryId}" />
+                                                <label th:for="'data-category-' + ${category.id}"
+                                                       th:text="${category.name}">Category Name</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Filter by Page Number -->
+                                <div class="group-filter" aria-expanded="true">
+                                    <div class="layered_subtitle dropdown-filter">
+                                        <span>SỐ TRANG</span>
+                                        <span class="icon-control"></span>
+                                    </div>
+                                    <div class="layered-content bl-filter filter-page">
+                                        <ul class="check-box-list">
+                                            <li>
+                                                <input type="radio" id="p1" name="minPage" value="0"
+                                                       th:checked="${0 == param.minPage}" />
+                                                <label for="p1">Dưới 100 trang</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="p2" name="minPage" value="100" th:checked="${100 == param.minPage}" />
+                                                <input type="hidden" name="maxPage" value="200" />
+                                                <label for="p2">100 - 200 trang</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="p3" name="minPage" value="200" th:checked="${200 == param.minPage}" />
+                                                <input type="hidden" name="maxPage" value="300" />
+                                                <label for="p3">200 - 300 trang</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="p4" name="minPage" value="300" th:checked="${300 == param.minPage}" />
+                                                <input type="hidden" name="maxPage" value="500" />
+                                                <label for="p4">300 - 500 trang</label>
+                                            </li>
+                                            <li>
+                                                <input type="radio" id="p5" name="minPage" value="500" th:checked="${500 == param.minPage}" />
+                                                <label for="p5">Trên 500 trang</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <button type="submit" style="background-color: #4CAF50; color: white; padding: 12px 20px; border: none; cursor: pointer; border-radius: 4px; font-size: 16px;">Lọc</button>
+                            </form>
+
+                            <!-- Display Products -->
+                            <div class="sidebar-block sidebar-product">
+                                <div class="sidebar-title">
+                                    <h3>Sản phẩm nổi bật</h3>
+                                </div>
+                                <div class="sidebar-content">
+                                    <div th:each="book : ${books}" class="product-item-mini">
+                                        <div class="product-img" style="border: none;">
+                                            <a th:href="@{/detail/{bookId}(bookId=${book.id})}">
+                                                <img th:src="@{${book.imgUrl}}" alt="" />
                                             </a>
-                                        </h3>
-                                        <div class="box-pro-prices">
-                                            <p class="pro-price highlight">
-                                                <span class="current-price">900,000₫</span>
-                                            </p>
+                                        </div>
+                                        <div class="product-content">
+                                            <h3 class="product-title">
+                                                <a th:href="@{/detail/{bookId}(bookId=${book.id})}"
+                                                   th:title="${book.title}">
+                                                    <span th:text="${book.title}">Book Title</span>
+                                                </a>
+                                            </h3>
+                                            <div class="box-pro-prices">
+                                                <p class="pro-price highlight">
+                                                    <span class="current-price" th:text="${book.price} + '₫'">900,000₫</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sidebar-block box_image d-none d-md-block p-0">
-                            <div class="banner">
-                                <a href="">
-                                    <img src="/img/collection_banner_img.jpg"
-                                         alt="">
-                                </a>
+
+                            <div class="sidebar-block box_image d-none d-md-block p-0">
+                                <div class="banner">
+                                    <a href="">
+                                        <img src="/img/collection_banner_img.jpg" alt="">
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
