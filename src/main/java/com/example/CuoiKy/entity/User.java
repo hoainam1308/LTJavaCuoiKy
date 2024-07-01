@@ -37,6 +37,9 @@ public class User {
     @NotBlank(message = "Your name is required")
     private String name;
 
+    @Column(name = "email_verified")
+    private boolean emailVerified = false;
+
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();

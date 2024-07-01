@@ -1,7 +1,9 @@
 package com.example.CuoiKy.controller;
 
 import com.example.CuoiKy.entity.User;
+import com.example.CuoiKy.service.EmailService;
 import com.example.CuoiKy.service.UserService;
+import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,13 +14,17 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private EmailService emailService;
     @GetMapping("/login")
     public String login() {
         return "user/login";
@@ -40,9 +46,93 @@ public class UserController {
             }
             return "user/register";
         }
-        user.setPassword(new
-                BCryptPasswordEncoder().encode(user.getPassword()));
-        userService.save(user);
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        try {
+            userService.save(user);
+        } catch (RuntimeException e) {
+            model.addAttribute("emailError", "There was an error sending the verification email.");
+            return "user/register";
+        }
         return "redirect:user/login";
+    }
+
+    @GetMapping("/forgot-password")
+    public String showForgotPasswordForm() {
+        return "user/forgot-password";
+    }
+
+    @PostMapping("/forgot-password")
+    public String processForgotPassword(@RequestParam("username") String username, Model model) {
+        User user = userService.findByUsername(username);
+        if (user == null || !user.isEmailVerified()) {
+            model.addAttribute("error", "Username không tồn tại hoặc email chưa được xác thực.");
+            return "user/forgot-password";
+        }
+
+        String maskedEmail = maskEmail(user.getEmail());
+        model.addAttribute("emailMasked", maskedEmail);
+        model.addAttribute("username", username);
+        return "user/forgot-password";
+    }
+
+    @PostMapping("/forgot-password-confirm")
+    public String confirmForgotPassword(@RequestParam("username") String username,
+                                        @RequestParam("email") String email, Model model) {
+        User user = userService.findByUsername(username);
+        if (user == null || !user.getEmail().equals(email) || !user.isEmailVerified()) {
+            model.addAttribute("error", "Username hoặc email không đúng hoặc email chưa được xác thực.");
+            return "user/forgot-password";
+        }
+
+        String token = UUID.randomUUID().toString();
+        userService.createPasswordResetTokenForUser(user, token);
+
+        String resetUrl = "http://localhost:8080/reset-password?token=" + token;
+        emailService.sendEmail(user.getEmail(), "Reset your password",
+                "Click the link to reset your password: " + resetUrl);
+
+        model.addAttribute("message", "Đã gửi mail về tài khoản " + maskEmail(user.getEmail()));
+        return "user/forgot-password-confirm";
+    }
+
+    private String maskEmail(String email) {
+        int atIndex = email.indexOf("@");
+        if (atIndex > 2) {
+            return email.substring(0, 2) + "****" + email.substring(atIndex - 4);
+        } else {
+            return "****" + email.substring(atIndex);
+        }
+    }
+
+    @GetMapping("/reset-password")
+    public String showResetPasswordForm(@RequestParam("token") String token, Model model) {
+        String result = userService.validatePasswordResetToken(token);
+        if (result != null) {
+            model.addAttribute("error", result);
+            return "user/forgot-password";
+        }
+
+        model.addAttribute("token", token);
+        return "user/reset-password";
+    }
+
+    @PostMapping("/reset-password")
+    public String processResetPassword(@RequestParam("token") String token,
+                                       @RequestParam("password") String password, Model model) {
+        String result = userService.validatePasswordResetToken(token);
+        if (result != null) {
+            model.addAttribute("error", result);
+            return "user/forgot-password";
+        }
+
+        User user = userService.getUserByPasswordResetToken(token);
+        if (user != null) {
+            userService.changeUserPassword(user, password);
+            model.addAttribute("message", "Mật khẩu của bạn đã được thay đổi thành công.");
+            return "user/login";
+        } else {
+            model.addAttribute("error", "Invalid token.");
+            return "user/reset-password";
+        }
     }
 }
