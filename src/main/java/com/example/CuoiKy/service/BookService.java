@@ -3,6 +3,7 @@ package com.example.CuoiKy.service;
 import com.example.CuoiKy.entity.Book;
 import com.example.CuoiKy.repository.IBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +17,23 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public List<Book> filterBook(Long cateId, Integer page, Long authorId){
-        return bookRepository.filterBook(cateId, page, authorId);
+    public List<Book> filterBooks(Long authorId, Long categoryId, Integer minPage, Integer maxPage) {
+        Specification<Book> spec = Specification.where(null);
+
+        if (authorId != null) {
+            spec = spec.and((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("author").get("id"), authorId));
+        }
+        if (categoryId != null) {
+            spec = spec.and((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("category").get("id"), categoryId));
+        }
+        if (minPage != null) {
+            spec = spec.and((root, query, criteriaBuilder) -> criteriaBuilder.greaterThanOrEqualTo(root.get("page"), minPage));
+        }
+        if (maxPage != null) {
+            spec = spec.and((root, query, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("page"), maxPage));
+        }
+
+        return bookRepository.findAll(spec);
     }
 
     public List<Book> searchBook(String query){
@@ -51,4 +67,5 @@ public class BookService {
     public void updateBook(Book book){
         bookRepository.save(book);
     }
+
 }

@@ -1,7 +1,9 @@
 package com.example.CuoiKy.controller;
 
+import com.example.CuoiKy.entity.Author;
 import com.example.CuoiKy.entity.Book;
 import com.example.CuoiKy.entity.Category;
+import com.example.CuoiKy.service.AuthorService;
 import com.example.CuoiKy.service.BookService;
 import com.example.CuoiKy.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ import java.util.List;
 public class HomeController {
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private AuthorService authorService;
 
     @Autowired
     private CategoryService categoryService;
@@ -41,15 +46,14 @@ public class HomeController {
     public String getAllBook(Model model){
         List<Book> books = bookService.getAllBook();
         model.addAttribute("books", books);
+        List<Author> authors = authorService.getAllAuthor();
+        model.addAttribute("authors", authors);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "home/library";
     }
 
-    @GetMapping("filter")
-    public String filterBook(Model model, @RequestParam Long cateId, @RequestParam Integer bookPage, @RequestParam Long authorId){
-        List<Book> books = bookService.filterBook(cateId, bookPage, authorId);
-        model.addAttribute("books", books);
-        return "home/library";
-    }
+
 
     @GetMapping("/detail/{bookId}")
     public String getBookDetail(Model model, @PathVariable Long bookId){
@@ -72,6 +76,19 @@ public class HomeController {
         return "share/set";
     }
 
-
+    @GetMapping("/filter")
+    public String filterBooks(Model model,
+                              @RequestParam(required = false) Long authorId,
+                              @RequestParam(required = false) Long categoryId,
+                              @RequestParam(required = false) Integer minPage,
+                              @RequestParam(required = false) Integer maxPage) {
+        List<Book> books = bookService.filterBooks(authorId, categoryId, minPage, maxPage);
+        model.addAttribute("books", books);
+        List<Author> authors = authorService.getAllAuthor();
+        model.addAttribute("authors", authors);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
+        return "home/library";
+    }
 
 }
