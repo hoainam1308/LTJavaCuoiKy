@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="filterFragment">
+    <div class="wrap-filter">
+        <div class="box_sidebar">
+            <div class="block left-module">
+                <div class=" filter_xs">
+                    <div class="layered">
+                        <div class="sidebar-block block_content">
+                            <!-- ./filter brand -->
+                            <div class="group-filter" aria-expanded="true">
+                                <div class="layered_subtitle dropdown-filter"><span>Tác
+                                                                    Giả</span><span class="icon-control"><i
+                                        class="fal fa-angle-up"></i></span></div>
+                                <div class="layered-content bl-filter filter-brand">
+                                    <ul class="check-box-list">
+                                        <li>
+                                            <input type="checkbox" id="data-brand-p1"
+                                                   value="NXB Kim Đồng" name="brand-filter"
+                                                   data-vendor="(vendor:product contains NXB Kim Đồng)" />
+                                            <label for="data-brand-p1">NXB Kim Đồng</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- ./filter price -->
+                            <div class="group-filter" aria-expanded="false">
+                                <div class="layered_subtitle dropdown-filter"><span>Giá sản
+                                                                    phẩm</span><span class="icon-control"><i
+                                        class="fal fa-angle-up"></i></span></div>
+                                <div class="layered-content bl-filter filter-price">
+                                    <ul class="check-box-list">
+                                        <li>
+                                            <input type="checkbox" id="p1" name="cc"
+                                                   data-price="(price:product<=100000)" />
+                                            <label for="p1"><span>Dưới</span>
+                                                100,000₫</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="p2" name="cc"
+                                                   data-price="((price:product>100000)&amp;&amp;(price:product<=2000000))" />
+                                            <label for="p2">100,000₫ - 2,000,000₫</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="p3" name="cc"
+                                                   data-price="((price:product>200000)&amp;&amp;(price:product<=300000))" />
+                                            <label for="p3">200,000₫ - 300,000₫</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="p4" name="cc"
+                                                   data-price="((price:product>300000)&amp;&amp;(price:product<=500000))" />
+                                            <label for="p4">300,000₫ - 500,000₫</label>
+                                        </li>
+                                        <li>
+                                            <input type="checkbox" id="p5" name="cc"
+                                                   data-price="(price:product>=500000)" />
+                                            <label for="p5"><span>Trên</span>
+                                                500,000₫</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-block sidebar-product">
+                            <div class="sidebar-title">
+                                <h3>Sản phẩm nổi bật</h3>
+                            </div>
+                            <div class="sidebar-content">
+                                <div class="product-item-mini">
+                                    <div class="product-img" style="border: none;">
+                                        <a
+                                                href="">
+                                            <img class="lazy"
+                                                 src=""
+                                                 alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="product-title">
+                                            <a href=""
+                                               title="Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)">
+                                                Tập Văn Họa Kỷ Niệm Nguyễn Du (Bản giấy dó)
+                                            </a>
+                                        </h3>
+                                        <div class="box-pro-prices">
+                                            <p class="pro-price highlight">
+                                                <span class="current-price">900,000₫</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-block box_image d-none d-md-block p-0">
+                            <div class="banner">
+                                <a href="">
+                                    <img src="/img/collection_banner_img.jpg"
+                                         alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
