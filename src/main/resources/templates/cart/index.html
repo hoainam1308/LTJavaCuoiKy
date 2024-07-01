@@ -54,17 +54,17 @@
                                                         <th class="remove">&nbsp;</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody th:each="book:${cartItems}">
                                                     <tr class="line-item-container" data-variant-id="1125206016">
                                                         <td class="image">
                                                             <div class="product_image">
-                                                                <a href="/products/de-con-cham-soc-me-i-m-a-caregiver-tap-2">
-                                                                    <img src="  //product.hstatic.net/200000845405/product/9786044026091-1_b46da4d7325a474d9a04b770b0c5297d_medium.jpg" alt="Để Con Chăm Sóc Mẹ - I’m A Caregiver - Tập 2" />
+                                                                <a href="">
+                                                                    <img th:src="@{${book.imgUrl}}" />
                                                                 </a>
                                                             </div>
                                                         </td>
                                                         <td class="item" width="420px">
-                                                            <h3><a href="/products/de-con-cham-soc-me-i-m-a-caregiver-tap-2">Để Con Chăm Sóc Mẹ - I’m A Caregiver - Tập 2 </a></h3>
+                                                            <h3><a href=""></a></h3>
                                                         </td>
                                                         <td class="item">
                                                             <span class="price">133,200₫</span>
@@ -77,8 +77,8 @@
                                                             </p>
                                                         </td>
                                                         <td class="remove">
-                                                            <a href="/cart/change?line=1&quantity=0" class="cart">
-                                                                <img src="//theme.hstatic.net/200000845405/1001223012/14/ic_close.png?v=149"/></a>
+                                                            <a href="" class="cart">
+                                                                <img src=""/></a>
                                                         </td>
                                                     </tr>
                                                     </tbody>
