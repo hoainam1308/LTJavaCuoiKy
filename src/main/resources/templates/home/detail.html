@@ -53,7 +53,7 @@
                                                 <div class="product-image-detail box__product-gallery scroll">
                                                     <div class="text-center">
                                                         <img class="product-image-feature"
-                                                             src="/img/ha-do.jpg"
+                                                             th:src="@{${book.imgUrl}}"
                                                              alt=" Lần Theo Dấu Ký Ức ">
                                                     </div>
                                                 </div>
@@ -62,16 +62,10 @@
                                         <div class="col-12 col-lg-6 product-content-desc" id="detail-product">
                                             <div class="product-title">
                                                 <h1 th:text="${book.title}"></h1>
-                                                <span id="pro_sku"><strong>ISBN:</strong>8938539539314</span>
                                             </div>
-                                            <p class="product-type">
-                                                Thiện Tri Thức
+                                            <p class="product-type" th:text="${book.author.name}">
+
                                             </p>
-                                            <div class="product-price" id="price-preview">
-                                                <span class="pro-price">299,700₫</span>
-                                                <del>333,000₫</del>
-                                                <span class="pro-sale hide">-10% </span>
-                                            </div>
                                             <form id="add-item-form" action="/cart/add" method="post"
                                                   class="variants clearfix">
                                                 <div class="select clearfix">
@@ -83,14 +77,6 @@
                                                 <div class="select-swatch clearfix">
                                                 </div>
                                                 <div class="selector-actions">
-                                                    <div class="quantity-area clearfix">
-                                                        <input type="button" value="-" onclick="minusQuantity()"
-                                                               class="qty-btn">
-                                                        <input type="text" id="quantity" name="quantity" value="1"
-                                                               min="1" class="quantity-selector">
-                                                        <input type="button" value="+" onclick="plusQuantity()"
-                                                               class="qty-btn">
-                                                    </div>
                                                     <div class="wrap-addcart">
                                                         <button th:href="@{/cart/add/{id}(id=${book.id})}" type="button"
                                                                 class=" add-to-cartProduct btn btn-primary btn-addtocart addtocart-modal "
@@ -183,9 +169,9 @@
                                                 <div class="product-sale" style="background: #f03737;"><span>-10%</span>
                                                 </div>
                                                 <a
-                                                        href="/products/bach-khoa-giai-toa-cang-thang-50-giai-phap-gat-bo-moi-lo-lang-muon-phien-va-met-moi-trong-cuoc-song">
-                                                    <img src="//product.hstatic.net/200000845405/product/b_a_1_b_ch_khoa_7bd0cb807bf143279b38a88761f644e9_medium.png"
-                                                         alt=" “Bách Khoa” Giải Tỏa Căng Thẳng - 50+ Giải Pháp Gạt Bỏ Mọi Lo Lắng, Muộn Phiền Và Mệt Mỏi Trong Cuộc Sống " />
+                                                        href="">
+                                                    <img src=""
+                                                         alt="" />
 
                                                 </a>
                                                 <div class="button-add d-none d-md-flex">

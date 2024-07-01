@@ -1,6 +1,7 @@
 package com.example.CuoiKy.controller;
 
 import com.example.CuoiKy.entity.Book;
+import com.example.CuoiKy.entity.Category;
 import com.example.CuoiKy.service.BookService;
 import com.example.CuoiKy.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class HomeController {
         }
         List<Book> books = bookService.getAllBook();
         model.addAttribute("books", books);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "home/index";
     }
 
@@ -59,7 +62,7 @@ public class HomeController {
     public String getBookByCateId(Model model, @PathVariable Long id){
         List<Book> books = bookService.getByCateId(id);
         model.addAttribute("books", books);
-        return "share/cate";
+        return "home/library";
     }
 
     @GetMapping("/set/{bookId}")
