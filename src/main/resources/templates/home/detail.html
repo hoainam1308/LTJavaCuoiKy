@@ -52,9 +52,7 @@
                                             <div class="product-gallery">
                                                 <div class="product-image-detail box__product-gallery scroll">
                                                     <div class="text-center">
-                                                        <img class="product-image-feature"
-                                                             th:src="@{${book.imgUrl}}"
-                                                             alt=" Lần Theo Dấu Ký Ức ">
+                                                        <img class="product-image-feature" th:src="@{${book.imgUrl}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,26 +64,13 @@
                                             <p class="product-type" th:text="${book.author.name}">
 
                                             </p>
-                                            <form id="add-item-form" action="/cart/add" method="post"
-                                                  class="variants clearfix">
-                                                <div class="select clearfix">
-                                                    <select id="product-select" name="id">
-                                                        <option value="1122393285">Thiện Tri Thức / 2024 / 318 -
-                                                            299,700₫</option>
-                                                    </select>
+                                            <div class="selector-actions">
+                                                <div class="wrap-addcart">
+                                                    <a th:href="@{/cart/add/{bookId}(bookId=${book.id})}" class=" add-to-cartProduct btn btn-primary btn-addtocart addtocart-modal ">
+                                                        Thêm vào giỏ
+                                                    </a>
                                                 </div>
-                                                <div class="select-swatch clearfix">
-                                                </div>
-                                                <div class="selector-actions">
-                                                    <div class="wrap-addcart">
-                                                        <button th:href="@{/cart/add/{id}(id=${book.id})}" type="button"
-                                                                class=" add-to-cartProduct btn btn-primary btn-addtocart addtocart-modal "
-                                                                name="add">
-                                                            Thêm vào giỏ
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Not Found</title>
-    <th:block th:replace="~{layout :: link-css}"></th:block>
+    <div th:insert="~{Shared/head :: headFragment}"></div>
 </head>
 <body>
-    <th:block th:replace="~{layout :: header}"></th:block>
+<div th:insert="~{Shared/header :: headerFragment}"></div>
+<div th:insert="~{Shared/search :: searchFragment}"></div>
     <div class="d-flex align-items-center justify-content-center vh-25">
         <div class="text-center">
             <h1 class="display-1 fw-bold">404</h1>
@@ -19,6 +20,7 @@
             <a href="/" class="btn btn-primary">Back to homepage</a>
         </div>
     </div>
-    <th:block th:replace="~{layout :: footer}"></th:block>
+<div th:insert="~{Shared/footer :: footerFragment}"></div>
+<div th:insert="~{Shared/script :: scriptFragment}"></div>
 </body>
 </html>

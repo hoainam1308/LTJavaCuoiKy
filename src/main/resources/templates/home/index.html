@@ -138,8 +138,9 @@
                           <img class="lazy" th:src="@{${bookCate.imgUrl}}" alt="" />
                         </a>
                         <div class="button-add d-none d-md-flex">
-                          <button title="Thêm vào giỏ" data-tooltip="Thêm vào giỏ"><i
-                                  class="fal fa-cart-plus"></i></button>
+                          <a th:href="@{/cart/add/{bookId}(bookId=${bookCate.id})}"
+                             data-tooltip="Them gio sach"><i
+                                  class="fal fa-cart-plus"></i></a>
                           <a th:href="@{/detail/{id}(id=${bookCate.id})}"
                              data-tooltip="Chi tiết"><i class="fal fa-eye"></i></a>
                         </div>
